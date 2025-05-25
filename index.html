@@ -1,167 +1,207 @@
 <!DOCTYPE html>
-<html lang="hi" dir="ltr">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>चंद्र भारत - ताज़ा समाचार और अपडेट</title>
-    <meta name="description" content="भारतीय समाचार, राजनीति, प्रौद्योगिकी और मनोरंजन के ताज़ा अपडेट">
-    
-    <!-- SEO Meta -->
-    <meta name="keywords" content="भारत समाचार, हिंदी न्यूज़, राजनीति, टेक्नोलॉजी">
-    <meta property="og:title" content="चंद्र भारत समाचार">
-    <meta property="og:type" content="website">
-    
-    <!-- Preload Assets -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css" media="all">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <title>चंद्र भारत - देश की ताज़ा ख़बरें</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', 'Arial', sans-serif;
+        }
+
+        header {
+            background: #C11B17;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            background: #333;
+            padding: 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #C11B17;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .breaking-news {
+            background: #ffeb3b;
+            padding: 0.5rem;
+            margin: 1rem 0;
+            font-weight: bold;
+            color: #C11B17;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .news-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            background: white;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #C11B17;
+        }
+
+        .news-content {
+            padding: 1rem;
+        }
+
+        .news-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .news-source {
+            color: #C11B17;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: #C11B17;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem;
+            }
+            nav a {
+                margin: 0 1rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Header -->
-    <header class="header" role="banner">
-        <div class="container header-container">
-            <div class="logo">
-                <a href="/" class="logo-link" aria-label="मुख पृष्ठ">
-                    <img src="images/logo/logo.svg" 
-                         alt="चंद्र भारत लोगो" 
-                         class="logo-image"
-                         width="150"
-                         height="50"
-                         loading="eager">
-                    <div class="logo-text">
-                        <h1 class="logo-title">चंद्र भारत</h1>
-                        <p class="logo-subtitle">विश्वसनीय समाचार</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Navigation -->
-            <nav class="nav" aria-label="मुख्य मेनू">
-                <button class="menu-toggle" 
-                        aria-label="मेनू खोलें/बंद करें"
-                        aria-expanded="false"
-                        aria-controls="main-nav">
-                    <span class="bar" aria-hidden="true"></span>
-                    <span class="bar" aria-hidden="true"></span>
-                    <span class="bar" aria-hidden="true"></span>
-                </button>
-                
-                <ul class="nav-list" id="main-nav" role="navigation">
-                    <li role="none">
-                        <a href="#general" class="nav-link active" 
-                           data-category="general" 
-                           role="menuitem"
-                           aria-current="page">मुख्य</a>
-                    </li>
-                    <li role="none">
-                        <a href="#politics" class="nav-link" 
-                           data-category="politics" 
-                           role="menuitem">राजनीति</a>
-                    </li>
-                    <li role="none">
-                        <a href="#technology" class="nav-link" 
-                           data-category="technology" 
-                           role="menuitem">प्रौद्योगिकी</a>
-                    </li>
-                    <li role="none">
-                        <a href="#entertainment" class="nav-link" 
-                           data-category="entertainment" 
-                           role="menuitem">मनोरंजन</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <header>
+        <h1>चंद्र भारत</h1>
+        <p>देश की सबसे तेज़ और विश्वसनीय ख़बरें</p>
     </header>
 
-    <!-- Language Switcher -->
-    <div class="lang-switcher" role="region" aria-label="भाषा चयन">
-        <div role="radiogroup" aria-labelledby="lang-label">
-            <span id="lang-label" class="visually-hidden">भाषा चुनें</span>
-            <button data-lang="hi" 
-                    class="lang-btn active" 
-                    role="radio" 
-                    aria-checked="true">हिन्दी</button>
-            <button data-lang="en" 
-                    class="lang-btn" 
-                    role="radio" 
-                    aria-checked="false">English</button>
+    <nav>
+        <a href="#" onclick="loadNews('general')">मुख्य समाचार</a>
+        <a href="#" onclick="loadNews('national')">राष्ट्रीय</a>
+        <a href="#" onclick="loadNews('world')">अंतर्राष्ट्रीय</a>
+        <a href="#" onclick="loadNews('business')">व्यापार</a>
+        <a href="#" onclick="loadNews('sports')">खेल</a>
+        <a href="#" onclick="loadNews('entertainment')">मनोरंजन</a>
+        <a href="#" onclick="loadNews('technology')">टेक्नोलॉजी</a>
+        <a href="#" onclick="loadNews('health')">स्वास्थ्य</a>
+    </nav>
+
+    <div class="container">
+        <div class="breaking-news" id="breaking-news">
+            ताज़ा खबर: लोड हो रहा है...
+        </div>
+
+        <div class="news-grid" id="news-container">
+            <!-- News articles will be loaded here -->
         </div>
     </div>
 
-    <!-- Main Content -->
-    <main class="main-content" role="main">
-        <!-- Featured Article -->
-        <section class="featured-news" 
-                 aria-labelledby="featured-heading" 
-                 role="region">
-            <div class="container">
-                <h2 id="featured-heading" class="visually-hidden">प्रमुख समाचार</h2>
-                <div class="featured-card">
-                    <!-- Dynamic content loaded by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- News Grid -->
-        <section class="category-news" 
-                 aria-labelledby="category-heading" 
-                 role="region">
-            <div class="container">
-                <h2 id="category-heading" class="category-title">ताज़ा अपडेट</h2>
-                <div id="news-container" 
-                     class="news-grid" 
-                     role="feed" 
-                     aria-busy="true"
-                     aria-live="polite">
-                    <!-- Dynamic content loaded by JS -->
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="container footer-container">
-            <div class="footer-section" role="complementary">
-                <h3 class="footer-heading">हमारे बारे में</h3>
-                <p>सटीक और समय पर समाचार प्रदान करना</p>
-            </div>
-            
-            <div class="footer-section" role="navigation" aria-label="उपयोगी लिंक">
-                <h3 class="footer-heading">जल्दी लिंक</h3>
-                <ul class="footer-links">
-                    <li><a href="/privacy" class="footer-link">गोपनीयता नीति</a></li>
-                    <li><a href="/terms" class="footer-link">नियम और शर्तें</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section" role="form" aria-label="सदस्यता फॉर्म">
-                <h3 class="footer-heading">न्यूज़लेटर</h3>
-                <form class="newsletter-form">
-                    <input type="email" 
-                           class="email-input"
-                           placeholder="ईमेल पता"
-                           aria-label="ईमेल पता"
-                           required>
-                    <button type="submit" class="subscribe-btn">सब्सक्राइब</button>
-                </form>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>© 2024 चंद्र भारत. सर्वाधिकार सुरक्षित.</p>
-        </div>
+    <footer>
+        <p>© 2023 चंद्र भारत न्यूज़ नेटवर्क. सर्वाधिकार सुरक्षित.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="script.js" defer async></script>
+    <script>
+        const API_KEY = 'YOUR_GNEWS_API_KEY'; // Get from gnews.io
+        const BASE_URL = 'https://gnews.io/api/v4/top-headlines?category=general&lang=hi&country=in&apikey=';
+
+        async function loadNews(category = 'general') {
+            try {
+                document.getElementById('news-container').innerHTML = '<p>खबरें लोड हो रही हैं...</p>';
+                
+                const response = await fetch(`${BASE_URL}${API_KEY}&category=${category}`);
+                const data = await response.json();
+                
+                displayNews(data.articles);
+                updateBreakingNews(data.articles[0]);
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('news-container').innerHTML = 
+                    '<p>खबरें लोड करने में समस्या आई। कृपया बाद में पुनः प्रयास करें।</p>';
+            }
+        }
+
+        function displayNews(articles) {
+            const newsContainer = document.getElementById('news-container');
+            newsContainer.innerHTML = '';
+
+            articles.forEach(article => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card';
+                newsCard.innerHTML = `
+                    <img src="${article.image || 'placeholder.jpg'}" class="news-image" alt="${article.title}">
+                    <div class="news-content">
+                        <div class="news-source">${article.source.name}</div>
+                        <h3 class="news-title">${article.title}</h3>
+                        <a href="${article.url}" target="_blank" class="read-more">पूरी खबर पढ़ें</a>
+                    </div>
+                `;
+                newsContainer.appendChild(newsCard);
+            });
+        }
+
+        function updateBreakingNews(article) {
+            const breakingNews = document.getElementById('breaking-news');
+            breakingNews.innerHTML = `ताज़ा खबर: ${article.title} <a href="${article.url}" target="_blank" style="color: #C11B17; margin-left: 1rem;">विवरण</a>`;
+        }
+
+        // Initial load
+        loadNews();
+    </script>
 </body>
 </html>
