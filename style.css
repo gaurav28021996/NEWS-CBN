@@ -1,5 +1,4 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
-
 /* style.css */
 :root {
     --primary-red: #C11B17;
@@ -289,3 +288,5 @@ footer::before {
         padding: 0.5rem 1rem;
     }
 }
+
+
