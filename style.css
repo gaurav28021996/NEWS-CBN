@@ -67,6 +67,19 @@ header p {
     opacity: 0.9;
 }
 
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+}
+
+.logo-container svg {
+    width: 120px;
+    height: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
 /* Navigation Styles */
 nav {
     background: var(--dark-bg);
